@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ 'View' }} - {{ $user->name }}- details
+            {{ 'View' }}  {{ $user->name }} details
         </h2>
     </x-slot>
 
@@ -56,8 +56,6 @@
                                 {{ $user->language }}
                             </span>
                         </h2>
-                
-                        
                     </div>
                     <div class="mb-6">
                         <h2 class="text-lg font-medium text-gray-900">
@@ -77,7 +75,6 @@
                         @endforeach
                     </div>
 
-                    
                     <div class="mb-6">
                         <h2 class="text-lg font-medium text-gray-900">
                             {{ 'Created At' }}:

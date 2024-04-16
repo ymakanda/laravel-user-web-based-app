@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
-            'id_numder' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:13', 'max:13'],
+            'id_numder' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:13', 'max:13','unique:'.User::class],
             'mobile_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10', 'max:10'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'birth_date' => ['required', 'date'],

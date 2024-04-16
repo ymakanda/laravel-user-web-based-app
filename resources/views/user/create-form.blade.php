@@ -66,13 +66,14 @@
                         <div>
                             <?php  
                                 $availableOptions = ['coding', 'reading', 'Athletics'];
-                                $selectedOptions = json_decode($user->interests, true);
                             ?>
                             <x-input-label class="ml-5 mb-2" :value="__('Interests')" />
                             @foreach($availableOptions as $option)
                                 <label class="ml-5" for="{{ $option }}">{{ $option }}</label>
-                                <input type="checkbox" id="{{ $option }}" name="interests[{{ $option }}]" value="{{ $option }}" class="form-checkbox ml-5 mb-2 h-15 w-15 text-blue-600" {{ in_array($option, $selectedOptions) ? 'checked' : '' }}>
+                                <input type="checkbox" id="{{ $option }}" name="interests[{{ $option }}]" value="{{ $option }}" class="form-checkbox ml-5 mb-2 h-15 w-15 text-blue-600" />
+                                
                             @endforeach
+        
                             <x-input-error class="mt-2" :messages="$errors->get('interests')" />
                         </div>
 

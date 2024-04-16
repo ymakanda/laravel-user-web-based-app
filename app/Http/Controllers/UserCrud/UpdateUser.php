@@ -26,11 +26,12 @@ class UpdateUser extends Controller
     public function update(Request $request, int $id): RedirectResponse
     {
         $user = User::findOrFail($id);
-
+        
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
-            'id_numder' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:13', 'max:13'],
+            'id_numder' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:13', 'max:13',
+            Rule::unique(User::class)->ignore($user->id)],
             'mobile_number' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10', 'max:10'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
             'birth_date' => ['required', 'date'],
