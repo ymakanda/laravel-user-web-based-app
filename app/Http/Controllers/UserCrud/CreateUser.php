@@ -5,8 +5,12 @@ namespace App\Http\Controllers\UserCrud;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreRequest;
 use App\Models\User;
+use App\Events\UserAddedEvent;
+use App\Mail\UserAddedEmail;
+use App\Providers\NewUserAddedEvent;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Mail;
 
 class CreateUser extends Controller
 {
@@ -18,7 +22,7 @@ class CreateUser extends Controller
         $interests = \App\Models\Intrest::all();
         $languages = \App\Models\Language::all();
 
-        return view('user.form',['interests' =>$interests, 'languages' =>$languages]);
+        return view('user.create-form',['interests' =>$interests, 'languages' =>$languages]);
         
     }
 
@@ -35,6 +39,9 @@ class CreateUser extends Controller
         $user= User::create($validated);
         
         if($user) {
+            //event(new NewUserAddedEvent($user));
+            Mail::to($user->email)->send(new UserAddedEmail($user));
+
             return redirect()->route('all-users');
         }
 

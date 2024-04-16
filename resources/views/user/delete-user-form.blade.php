@@ -15,7 +15,7 @@
                         @method('delete')
                     @endisset
 
-                    <p class="mb-5 flex justify-center">Are you sure you want to delete this user account? <strong>{{ $user->name }} </strong></p>  
+                    <p class="mb-5 flex justify-center">Are you sure you want to delete this user account?    <strong class="ml-5">{{ $user->name }} </strong></p>  
                     <div class="mt-6 flex justify-center">
                         <a href="{{ route('all-users') }}" class=" items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150">Cancel</a>
                         <x-danger-button class="ms-3">
