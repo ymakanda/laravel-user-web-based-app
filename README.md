@@ -15,7 +15,7 @@ Clone the repository locally
 ``` git clone git@github.com:ymakanda/laravel-user-web-based-app.git ```
 
 - cd to your working directory ``` cd laravel-user-web-based-app ```
-- copy from .example to new  `.env` file and update your DB user details
+- copy from .example to new  `.env` file and update your DB and MAIL_DRIVER details
 - Install composer and npm 
 -
 
