@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $data = ['1' => 'coding', '2' => 'reading'];
+        $data = ['coding','reading'];
 
         $user = \App\Models\User::create([
             'name' => 'Admin',
