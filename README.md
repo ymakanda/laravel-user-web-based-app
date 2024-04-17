@@ -1,6 +1,3 @@
-# &lt;clipboard-copy&gt; element
-
-Copy element text content or input values to the clipboard.
 
 # Web-based application
 
@@ -27,7 +24,7 @@ Clone the repository locally
 Run this to get dummy data for login
 
 ```bash
-    php artisan migrate
+    php artisan migrate:fresh --seed
 ``` 
 ```bash
 npm run dev
@@ -35,5 +32,3 @@ npm run dev
 **Login details:**
 User name : admin@example.com
 Password:   password
-
-**Runing Test**
