@@ -22,6 +22,6 @@ class UserAddedListener
      */
     public function handle(UserAddedEvent $event)
     {
-        SendUserAddedEmailJob::dispatch($event);
+        SendUserAddedEmailJob::dispatch($event->user);
     }
 }

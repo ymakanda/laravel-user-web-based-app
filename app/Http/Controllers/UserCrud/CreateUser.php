@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreRequest;
 use App\Models\User;
 use App\Events\UserAddedEvent;
-use App\Mail\UserAddedEmail;
-use App\Providers\NewUserAddedEvent;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Mail;
@@ -31,7 +29,6 @@ class CreateUser extends Controller
      */
     public function store(StoreRequest $request): RedirectResponse
     {
-    
         $validated = $request->validated();
 
          $validated['interests'] = json_encode($request['interests'], true);
@@ -39,8 +36,8 @@ class CreateUser extends Controller
         $user= User::create($validated);
         
         if($user) {
-            //event(new NewUserAddedEvent($user));
-            Mail::to($user->email)->send(new UserAddedEmail($user));
+
+            event(new UserAddedEvent($user));
 
             return redirect()->route('all-users');
         }
