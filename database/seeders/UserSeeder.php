@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             'id_numder' => '9001015678908',
             'mobile_number' => '0123456789',
             'birth_date' => date('1988/10/13'),
-            'language' => 'Test Admin User',
+            'language' => 'English',
             'interests' => json_encode($data),
             'email' => 'admin@example.com',
             'email_verified_at' => now(),
