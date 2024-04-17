@@ -65,7 +65,7 @@
                         </div>
                         <div>
                             <?php  
-                                $availableOptions = ['coding', 'reading', 'Athletics'];
+                                $availableOptions = ['coding', 'reading', 'Athletics', 'dancing'];
                             ?>
                             <x-input-label class="ml-5 mb-2" :value="__('Interests')" />
                             @foreach($availableOptions as $option)

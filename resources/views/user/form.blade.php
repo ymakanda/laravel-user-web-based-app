@@ -59,24 +59,35 @@
                         </div>
 
                         <div>
+                        <?php  
+                            $options = ['Afrikaans','English','isiXhosa','isiZulu','Sesotho','Xitsonga',
+                                        'isiNdebele','siSwati','Tshivenda','Setswana'];
+
+                                        $selectedOption = $user->language; // User's selected option
+
+                            ?>
                             <x-input-label for="language" value="Language" />
-                                <x-input-select :options="$languages" id="language" name="language"  class="mt-1 block w-full"/>
-                                <x-input-error class="mt-2" :messages="$errors->get('language')" />
+                            <select name="language" id="language" class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    @foreach($options as $option)
+                                        <option value="{{ $option }}" {{ $option == $selectedOption ? 'selected' : '' }}>{{ $option }}</option>
+                                    @endforeach
+                            </select>
                         </div>
                         <div>
                             <?php  
-                                $availableOptions = ['coding', 'reading', 'Athletics'];
+                                $availableOptions = ['coding', 'reading', 'Athletics', 'dancing'];
                                 $selectedOptions = json_decode($user->interests, true);
                             ?>
-                            <x-input-label class="ml-5 mb-2" :value="__('Interests')" />
+                        
+                            <x-input-label for="interests" value="Interests" />
                             @foreach($availableOptions as $option)
-                                <label class="ml-5" for="{{ $option }}">{{ $option }}</label>
+                                <label class="ml-2" for="{{ $option }}">{{ $option }}</label>
                                 <input type="checkbox" id="{{ $option }}" name="interests[{{ $option }}]" value="{{ $option }}" class="form-checkbox ml-5 mb-2 h-15 w-15 text-blue-600" {{ in_array($option, $selectedOptions) ? 'checked' : '' }}>
                             @endforeach
                             <x-input-error class="mt-2" :messages="$errors->get('interests')" />
                         </div>
 
-                        <div class="flex items-center gap-4 mb-5 ml-5">
+                        <div class="flex items-center gap-4 mb-5 ml-2">
                             <x-primary-button>{{ __('Save') }}</x-primary-button>
                         </div>
                     </form>

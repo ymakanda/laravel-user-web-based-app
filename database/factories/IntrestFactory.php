@@ -17,7 +17,7 @@ class IntrestFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->sentence(),
+            'name' => $this->faker->unique()->word(),
         ];
     }
 }
